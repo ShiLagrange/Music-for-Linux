@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/云音乐-01.png</file>
+        <file>resource/音乐b.png</file>
+        <file>resource/音乐w.png</file>
+        <file>resource/最近播放b.png</file>
+        <file>resource/最近播放w.png</file>
+        <file>resource/qq音乐.png</file>
+        <file>resource/视屏b.png</file>
+        <file>resource/视屏w.png</file>
+        <file>resource/电台b.png</file>
+        <file>resource/电台w.png</file>
+        <file>resource/电脑b.png</file>
+        <file>resource/电脑w.png</file>
+    </qresource>
+</RCC>
