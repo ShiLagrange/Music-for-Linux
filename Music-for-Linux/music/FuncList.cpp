@@ -16,7 +16,13 @@ FuncList::FuncList(QWidget *parent)
     radioButton     = new FuncButton;
     localButton     = new FuncButton;
     recentPlayButton = new FuncButton;
-    m_font          =  new QFont("宋体", 12, QFont::Bold);
+
+    widget1 = new QWidget(this);
+    widget2 = new QWidget(this);
+    vlayou1 = new QVBoxLayout;
+    vlayout2 = new QVBoxLayout;
+
+    m_font          =  new QFont("宋体", 10, QFont::Normal);
 
     initLayout();
 }
@@ -35,9 +41,10 @@ void FuncList::initLayout(){
     m_nameLabel->setPalette(m_palette);
     m_nameLabel->setAutoFillBackground(true);
     m_nameLabel->setMaximumSize(100, 40);
-    m_nameLabel->setFont(QFont("Ubuntu", 15, QFont::Bold));
+    m_nameLabel->setFont(QFont("宋体", 15, QFont::Bold));
 
     m_onlineMusLab->setText("在线音乐");
+    m_onlineMusLab->setFont(QFont("宋体", 10, QFont::Thin));
 
     musicTubeButton->setProperty(QString(":/resource/音乐"), QString("音乐馆"), *m_font);
     musicTubeButton->initLayout();
@@ -46,25 +53,32 @@ void FuncList::initLayout(){
     radioButton->setProperty(QString(":/resource/电台"), QString("电台"), *m_font);
     radioButton->initLayout();
 
-    m_localMusLab->setText("本地音乐");
+    vlayou1->addWidget(m_onlineMusLab);
+    vlayou1->addWidget(musicTubeButton);
+    vlayou1->addWidget(vedioButton);
+    vlayou1->addWidget(radioButton);
+    widget1->setLayout(vlayou1);
 
+    m_localMusLab->setText("  本地音乐");
+    m_localMusLab->setFont(QFont("宋体", 10, QFont::Thin));
     localButton->setProperty(QString(":/resource/电脑"), QString("本地和下载"), *m_font);
     localButton->initLayout();
     recentPlayButton->setProperty(QString(":/resource/最近播放"), QString("最近播放"), *m_font);
     recentPlayButton->initLayout();
 
+    vlayout2->addWidget(m_localMusLab, Qt::AlignLeft);
+    vlayout2->addWidget(localButton, Qt::AlignLeft);
+    vlayout2->addWidget(recentPlayButton, Qt::AlignLeft);
+    widget2->setLayout(vlayout2);
+
     m_gridLayout->setSpacing(0);
     m_gridLayout->addWidget(m_iconLabel, 0, 0, 1, 1, Qt::AlignRight);
     m_gridLayout->addWidget(m_nameLabel, 0, 1, 1, 1, Qt::AlignLeft);
-
-    m_gridLayout->addWidget(m_onlineMusLab, 3, 0, 1, 2, Qt::AlignCenter);
-    m_gridLayout->addWidget(musicTubeButton, 4, 0, 1, 2, Qt::AlignCenter);
-    m_gridLayout->addWidget(vedioButton, 5, 0, 1, 2, Qt::AlignCenter);
-    m_gridLayout->addWidget(radioButton, 6, 0, 1, 2, Qt::AlignCenter);
-
-    m_gridLayout->addWidget(m_localMusLab, 8, 0, 1, 2, Qt::AlignCenter);
-    m_gridLayout->addWidget(localButton, 9, 0, 1, 2, Qt::AlignCenter);
-    m_gridLayout->addWidget(recentPlayButton, 10, 0, 1, 2, Qt::AlignCenter);
+    m_gridLayout->setRowStretch(0, 100);
+    m_gridLayout->addWidget(widget1, 2, 0, 1, 2, Qt::AlignCenter);
+    m_gridLayout->setColumnStretch(2, 10);
+    m_gridLayout->addWidget(widget2, 3, 0, 10, 10, Qt::AlignCenter);
+    m_gridLayout->setColumnStretch(3, 800);
 
     this->setLayout(m_gridLayout);
     this->setPalette(m_palette);
@@ -88,4 +102,9 @@ FuncList::~FuncList()
     delete recentPlayButton;
 
     delete m_gridLayout;
+    delete widget1;
+    delete widget2;
+
+    delete vlayou1;
+    delete vlayout2;
 }

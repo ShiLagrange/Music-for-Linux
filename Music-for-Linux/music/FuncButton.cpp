@@ -12,6 +12,7 @@ FuncButton::FuncButton(QWidget *parent)
 FuncButton::FuncButton(QString picPath, QString name, QFont font, QWidget *parent)
     : QDialog(parent)
 {
+
     m_picPath = picPath;
     m_name = name;
     m_clicked = false;
@@ -37,16 +38,16 @@ void FuncButton::initLayout(){
     m_iconLab.setPixmap(m_picPath+"b.png");
     m_iconLab.setAutoFillBackground(true);
     m_iconLab.setScaledContents(true);
-    m_iconLab.setMaximumSize(20, 20);
-    m_iconLab.setGeometry(QRect(50, 7,30,30));
+    m_iconLab.setMaximumSize(15, 15);
+    m_iconLab.setGeometry(QRect(10, 7, 30,30));
     m_iconLab.setParent(this);
 
     m_nameLab.setText(m_name);
     m_nameLab.setFont(m_font);
-    m_nameLab.setGeometry(QRect(80, 0, 150, 30));
+    m_nameLab.setGeometry(QRect(40, 0, 150, 30));
     m_nameLab.setParent(this);
 
-    this->setFixedSize(150, 40);
+    this->setFixedSize(150, 30);
 }
 
 
@@ -106,7 +107,7 @@ void FuncButton::paintEvent(QPaintEvent *event){
     QRect rect = this->rect();
     rect.setWidth(rect.width() - 1);
     rect.setHeight(rect.height() - 1);
-    painter.drawRoundedRect(rect, 15, 15);
+    painter.drawRoundedRect(rect, 5, 5);
 
     QWidget::paintEvent(event);
 }

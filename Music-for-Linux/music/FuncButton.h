@@ -6,7 +6,7 @@
 #include <QFont>
 #include <QPalette>
 #include <string>
-
+#include <QVBoxLayout>
 class FuncButton : public QDialog
 {
     Q_OBJECT

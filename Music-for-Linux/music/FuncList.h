@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QGridLayout>
 #include <QLabel>
-
+#include <QVBoxLayout>
 #include "FuncButton.h"
 
 class FuncList : public QWidget
@@ -30,6 +30,11 @@ private:
     FuncButton  *radioButton;
     FuncButton  *localButton;
     FuncButton  *recentPlayButton;
+
+    QWidget     *widget1;
+    QVBoxLayout *vlayou1;
+    QWidget     *widget2;
+    QVBoxLayout *vlayout2;
 
     QFont       *m_font;
 private:
